@@ -1,0 +1,11 @@
+grumphp:
+  tasks:
+    clover_coverage:
+      clover_file: clover.xml
+      level: 100
+
+  extensions:
+    - 'Phpro\GrumPHPCombinedCoverageExtension\GrumPHPCombinedCoverageExtension'
+
+parameters:
+  grumphp_merge_coverage_chunks_dir: 'cov'

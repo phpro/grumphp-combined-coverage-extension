@@ -1,0 +1,9 @@
+services:
+  Phpro\GrumPHPCombinedCoverageExtension\EventListener\MergeCoverageBeforeCloverCoverageTaskListener:
+    class: 'Phpro\GrumPHPCombinedCoverageExtension\EventListener\MergeCoverageBeforeCloverCoverageTaskListener'
+    factory: ['Phpro\GrumPHPCombinedCoverageExtension\EventListener\MergeCoverageBeforeCloverCoverageTaskListener', 'create']
+    arguments:
+      - "@=container.hasParameter('grumphp_merge_coverage_phpcov_executeable') ? parameter('grumphp_merge_coverage_phpcov_executeable'): null"
+      - "@=container.hasParameter('grumphp_merge_coverage_chunks_dir') ? parameter('grumphp_merge_coverage_chunks_dir'): null"
+    tags:
+      - { name: grumphp.event_listener, event: grumphp.task.run }
