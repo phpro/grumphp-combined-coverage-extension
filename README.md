@@ -35,3 +35,30 @@ parameters:
   # @link https://github.com/sebastianbergmann/phpcov
   grumphp_merge_coverage_phpcov_executeable: '/your/phpcov'
 ```
+
+
+## Example usage
+
+You can use this task together with the `paratest` and `phpunit` task.
+To combine the PHP coverage files into a single clover file, you can use the following configuration:
+
+```yaml
+parameters:
+  grumphp_merge_coverage_chunks_dir: 'cov'
+  
+grumphp:
+    tasks:
+        paratest:
+            config: phpunit.xml.dist
+            testsuite: unit
+            coverage-php: cov/unit.cov
+        phpunit:
+            config_file: phpunit.xml.dist
+            testsuite: functional
+            coverage-php: cov/functional.cov
+        clover_coverage:
+            clover_file: "coverage-all.xml"
+            minimum_level: 100
+            metadata:
+                priority: -100
+```
