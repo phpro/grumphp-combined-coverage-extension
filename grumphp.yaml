@@ -1,5 +1,8 @@
 grumphp:
   tasks:
+    phpcsfixer:
+      config: .php-cs-fixer.php
+      config_contains_finder: true
     phpunit:
       coverage-php: cov/full.cov
     clover_coverage:
