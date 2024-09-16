@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Phpro\GrumPHPCombinedCoverageExtension\EventListener;
 
 use GrumPHP\Event\TaskEvent;
@@ -7,7 +9,7 @@ use GrumPHP\Exception\RuntimeException;
 use GrumPHP\Task\CloverCoverage;
 use Symfony\Component\Process\Process;
 
-class MergeCoverageBeforeCloverCoverageTaskListener
+final class MergeCoverageBeforeCloverCoverageTaskListener
 {
     private function __construct(
         private readonly string $phpCoverageExecutable,
@@ -20,7 +22,7 @@ class MergeCoverageBeforeCloverCoverageTaskListener
         string $phpCoverageDir,
     ): self {
         return new self(
-            $phpCoverageExecutable ?: dirname(__DIR__, 2) . '/tools/phpcov',
+            $phpCoverageExecutable ?: dirname(__DIR__, 2).'/tools/phpcov',
             $phpCoverageDir,
         );
     }
@@ -40,7 +42,7 @@ class MergeCoverageBeforeCloverCoverageTaskListener
             'merge',
             '--clover',
             $target,
-            $this->phpCoverageDir
+            $this->phpCoverageDir,
         ]);
 
         $process->run();
@@ -48,12 +50,12 @@ class MergeCoverageBeforeCloverCoverageTaskListener
         if (!$process->isSuccessful()) {
             throw new RuntimeException(
                 'Unable to merge coverage files with phpcov: '
-                . PHP_EOL
-                . $process->getCommandLine()
-                . PHP_EOL
-                . $process->getOutput()
-                . PHP_EOL
-                . $process->getErrorOutput()
+                .PHP_EOL
+                .$process->getCommandLine()
+                .PHP_EOL
+                .$process->getOutput()
+                .PHP_EOL
+                .$process->getErrorOutput()
             );
         }
     }

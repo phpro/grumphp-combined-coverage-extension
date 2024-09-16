@@ -1,8 +1,12 @@
 grumphp:
   tasks:
+    phpunit:
+      coverage-php: cov/full.cov
     clover_coverage:
       clover_file: clover.xml
       level: 100
+      metadata:
+        priority: -100
 
   extensions:
     - 'Phpro\GrumPHPCombinedCoverageExtension\GrumPHPCombinedCoverageExtension'

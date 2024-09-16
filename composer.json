@@ -1,5 +1,13 @@
 {
     "name": "phpro/grumphp-combined-coverage-extension",
+    "description": "Combine multiple PHP coverage into a single clover XML before executing a clover check.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Toon Verwerft",
+            "email": "toon.verwerft@phpro.be"
+        }
+    ],
     "require": {
         "php": ">8.1",
         "phpro/grumphp": "^2.8",
@@ -10,9 +18,18 @@
             "Phpro\\GrumPHPCombinedCoverageExtension\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Phpro\\GrumPHPCombinedCoverageExtensionTests\\": "tests/"
+        }
+    },
     "config": {
         "allow-plugins": {
             "phpro/grumphp": true
         }
+    },
+    "require-dev": {
+        "php-cs-fixer/shim": "^3.64",
+        "phpunit/phpunit": "^11.3.5"
     }
 }
